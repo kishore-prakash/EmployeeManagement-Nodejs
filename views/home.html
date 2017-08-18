@@ -1,0 +1,31 @@
+<html ng-app="UserService">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Employee Management</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script><!-- load angular -->
+	<script src="js/services/employee_service.js"></script> <!-- load our todo service -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="UserService">
+
+  <div class="container">
+		<div class="jumbotron text-center">
+			<h1>Employee Management <span class="label label-info">{{ allEmployees }}</span></h1>
+		</div>
+  </div>
+</body>
+</html>
