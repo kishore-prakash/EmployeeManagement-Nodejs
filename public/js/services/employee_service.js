@@ -2,9 +2,16 @@
 
 var app = angular.module('employeeApp', []);
 app.controller('employees', function($scope, $http) {
-  $http.get("/api/employees")
+  $http.get('/api/employees')
   .then(function(response) {
       $scope.employees = response.data.employees;
+  });
+});
+
+app.controller('employee', function($scope, $http) {
+  $http.get('/api/employee/')
+  .then(function(response) {
+      $scope.employee = response.data.employees;
   });
 });
 

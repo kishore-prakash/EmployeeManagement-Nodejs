@@ -1,0 +1,59 @@
+<html>
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Employee Management</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script><!-- load angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/js/services/employee_service.js"></script> <!-- load our todo service -->
+</head>
+<!-- SET THE CONTROLLER -->
+<body>
+  <div class="container">
+		<div class="jumbotron text-center">
+			<h1>Add Employee</h1>
+		</div>
+
+    <form>
+      <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" class="form-control" id="dob">
+      </div>
+      <div class="form-group">
+          <label for="department">Department:</label>
+          <input type="text" class="form-control" id="deparment">
+      </div>
+      <div class="form-group">
+          <label for="gender">Gender:</label>
+          <input type="text" class="form-control" id="gender">
+      </div>
+      <div class="col-md-2 col-md-offset-5">
+        <button type="submit" class="btn btn-success btn-lg">Add</button>
+        <a href="/" class="btn btn-default btn-lg">Back</a>
+      </div>
+    </form>
+
+  </div>
+</body>
+</html>
