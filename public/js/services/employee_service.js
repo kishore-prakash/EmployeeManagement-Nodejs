@@ -15,6 +15,44 @@ app.controller('employee', function($scope, $http) {
   });
 });
 
+app.controller("addEmployee", function ($scope, $http) {
+    $scope.addEmployee = function () {
+      console.log('#someButton was clicked');
+       // use $.param jQuery function to serialize data from JSON
+        var employee = $.param({
+            name: $scope.name,
+            email: $scope.email,
+            dob: $scope.dob,
+            department: $scope.department,
+            gender: $scope.gender
+        });
+        //
+        // var config = {
+        //     headers : {
+        //         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+        //     }
+        // }
+
+        $http.post('/api/addEmployee', employee)
+        .then(function (response) {
+            $scope.status = response.data.status;
+        },
+        function(response){
+         // failure callback
+         });
+        // .success(function (data, status, headers, config) {
+        //     $scope.PostDataResponse = data;
+        // })
+        // .error(function (data, status, header, config) {
+        //     $scope.ResponseDetails = "Data: " + data +
+        //         "<hr />status: " + status +
+        //         "<hr />headers: " + header +
+        //         "<hr />config: " + config;
+        // });
+    };
+
+});
+
 // App.factory('employeeApp', ['$http', '$q', function($http, $q){
 //
 //     return {
