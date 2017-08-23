@@ -16,7 +16,7 @@ mongoose.connection.on('error',function (err) {
 });
 
 mongoose.connection.on('disconnected', function () {
-  console.log(chalk.orange('Mongoose disconnected'));
+  console.log(chalk.yellow('Mongoose disconnected'));
 });
 
 // Employees Schema

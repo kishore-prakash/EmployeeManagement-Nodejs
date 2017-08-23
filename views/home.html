@@ -66,8 +66,9 @@
 					    <td>{{ employee.department }}</td>
 					    <td>{{ employee.gender }}</td>
 					    <td>{{ employee.dob }}</td>
-							<td><a class="btn btn-primary glyphicon glyphicon-pencil"/></td>
-							<td><button type="button" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#editModal"/></td>
+							<td><button type="button" class="btn btn-primary glyphicon glyphicon-pencil" ng-click = "updateEmployeeRedirection(employee.email, employee.name, employee.dob, employee.department, employee.gender)" ng-controller="updateEmployeeRedirection"/></td>
+							<td><button type="button" class="btn btn-danger glyphicon glyphicon-trash" ng-click = "deleteEmployee(employee.email)" ng-controller="deleteEmployee"/></td>
+							<!-- <td><button type="button" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#editModal" ng-click = "deleteEmployee({{employee.email}})" ng-controller="deleteEmployee"/></td> -->
 					  </tr>
 				</table>
 			</div>

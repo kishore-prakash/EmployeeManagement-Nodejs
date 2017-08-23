@@ -15,100 +15,76 @@ app.controller('employee', function($scope, $http) {
   });
 });
 
-app.controller("addEmployee", function ($scope, $http) {
+app.controller("addEmployee", function ($scope, $http, $window) {
     $scope.addEmployee = function () {
-      console.log('#someButton was clicked');
        // use $.param jQuery function to serialize data from JSON
-        var employee = $.param({
-            name: $scope.name,
-            email: $scope.email,
-            dob: $scope.dob,
-            department: $scope.department,
-            gender: $scope.gender
-        });
-        //
-        // var config = {
-        //     headers : {
-        //         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-        //     }
-        // }
-
-        $http.post('/api/addEmployee', employee)
+        var employee = {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            dob: $("#dob").val(),
+            department: $("#department").val(),
+            gender: $("#gender").val()
+        };
+        $http.put('/api/addEmployee', employee)
         .then(function (response) {
-            $scope.status = response.data.status;
+            // $scope.status = response.data.status;
+            $window.location.href = '/';
         },
         function(response){
-         // failure callback
+            console.log(response);
          });
-        // .success(function (data, status, headers, config) {
-        //     $scope.PostDataResponse = data;
-        // })
-        // .error(function (data, status, header, config) {
-        //     $scope.ResponseDetails = "Data: " + data +
-        //         "<hr />status: " + status +
-        //         "<hr />headers: " + header +
-        //         "<hr />config: " + config;
-        // });
     };
-
 });
 
-// App.factory('employeeApp', ['$http', '$q', function($http, $q){
-//
-//     return {
-//
-//     employees: function() {
-//             return $http.get("/api/employees")
-//             .then(
-//                     function(response){
-//                         return response.data.employees;
-//                     },
-//                     function(errResponse){
-//                         console.error('Error while fetching users');
-//                         return $q.reject(errResponse);
-//                     }
-//             );
-//         },
-//
-//     createUser: function(user){
-//             return $http.post('http://localhost:8080/SpringMVC4RestAPI/user/', user)
-//             .then(
-//                     function(response){
-//                         return response.data;
-//                     },
-//                     function(errResponse){
-//                         console.error('Error while creating user');
-//                         return $q.reject(errResponse);
-//                     }
-//             );
-//         },
-//
-//     updateUser: function(user, id){
-//             return $http.put('http://localhost:8080/SpringMVC4RestAPI/user/'+id, user)
-//             .then(
-//                     function(response){
-//                         return response.data;
-//                     },
-//                     function(errResponse){
-//                         console.error('Error while updating user');
-//                         return $q.reject(errResponse);
-//                     }
-//             );
-//         },
-//
-//    deleteUser: function(id){
-//             return $http.delete('http://localhost:8080/SpringMVC4RestAPI/user/'+id)
-//             .then(
-//                     function(response){
-//                         return response.data;
-//                     },
-//                     function(errResponse){
-//                         console.error('Error while deleting user');
-//                         return $q.reject(errResponse);
-//                     }
-//             );
-//         }
-//
-//     };
-//
-// }]);
+app.controller("deleteEmployee", function ($scope, $http, $window) {
+    $scope.deleteEmployee = function (email) {
+       // use $.param jQuery function to serialize data from JSON
+        var employee = {
+            email: email
+        };
+        $http.post('/api/removeEmployee', employee )
+        .then(function (response) {
+            $scope.status = response.data.status;
+            $window.location.reload();
+        },
+        function(response){
+          $scope.status = response;
+         });
+    };
+});
+
+app.controller("updateEmployee", function ($scope, $http, $window) {
+    $scope.updateEmployee = function () {
+       // use $.param jQuery function to serialize data from JSON
+        var employee = {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            dob: $("#dob").val(),
+            department: $("#department").val(),
+            gender: $("#gender").val()
+        };
+        $http.post('/api/updateEmployee', employee)
+        .then(function (response) {
+            // $scope.status = response.data.status;
+            $window.location.href = '/';
+        },
+        function(response){
+            console.log(response);
+         });
+    };
+});
+
+app.controller("updateEmployeeRedirection", function ($scope, $http, $window) {
+    $scope.updateEmployeeRedirection = function (email, name, dob, department, gender) {
+       // use $.param jQuery function to serialize data from JSON
+        var employee = {
+            name: name,
+            email: email,
+            dob: dob,
+            department: department,
+            gender: gender
+        };
+
+        $window.location.href = '/updateEmployee?email=' + email + '&name=' + name + '&dob=' + dob + '&department=' + department + '&gender=' + gender ;
+    };
+});

@@ -18,10 +18,13 @@ app.use(bodyParser.json());
 app.get('/api/employees', employee.employees)
 app.get('/api/employee/:employee_id', employee.employee)
 app.put('/api/addEmployee/', employee.addEmployee)
-app.delete('/api/removeEmployee/:email', employee.deleteEmployee)
+app.post('/api/removeEmployee/', employee.deleteEmployee)
 app.post('/api/updateEmployee', employee.updateEmployee)
 app.get('/addEmployee', function (req, res) {
   res.sendFile(__dirname + '/views/addEmployee.html');
+});
+app.get('/updateEmployee', function (req, res) {
+  res.sendFile(__dirname + '/views/updateEmployee.html');
 });
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/home.html'); // load the single view file (angular will handle the page changes on the front-end)

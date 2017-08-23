@@ -19,12 +19,35 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="/js/services/employee_service.js"></script> <!-- load our todo service -->
+	<script>
+		var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+
+			for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+
+					if (sParameterName[0] === sParam) {
+							return sParameterName[1] === undefined ? true : sParameterName[1];
+					}
+			}
+		};
+		$(document).ready(function() {
+			$('#name').val(getUrlParameter('name'));
+			$('#email').val(getUrlParameter('email'));
+			$('#dob').val(getUrlParameter('dob'));
+			$('#department').val(getUrlParameter('department'));
+			$('#gender').val(getUrlParameter('gender'));
+		});
+	</script>
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-app="employeeApp">
-  <div class="container" ng-controller="addEmployee">
+  <div class="container" ng-controller="updateEmployee">
 		<div class="jumbotron text-center">
-			<h1>Add Employee</h1>
+			<h1>Update Employee Details</h1>
 		</div>
 
     <form>
@@ -34,7 +57,7 @@
       </div>
       <div class="form-group">
           <label for="email">Email address:</label>
-          <input type="email" class="form-control" id="email" name="email" ng-model="employee.email" placeholder="email">
+          <input type="email" class="form-control" id="email" name="email" ng-model="employee.email" placeholder="email" disabled>
       </div>
       <div class="form-group">
           <label for="dob">Date of Birth:</label>
@@ -49,7 +72,7 @@
           <input type="text" class="form-control" id="gender" name="gender" ng-model="employee.gender" placeholder="Gender">
       </div>
       <div class="col-md-2 col-md-offset-5">
-        <button type="submit" class="btn btn-success btn-lg" ng-click="addEmployee()">Add</button>
+        <button type="submit" class="btn btn-success btn-lg" ng-click="updateEmployee()">Add</button>
         <a href="/" class="btn btn-default btn-lg">Back</a>
       </div>
       <span>{{status}}</span>

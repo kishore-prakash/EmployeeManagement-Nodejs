@@ -45,7 +45,7 @@ exports.addEmployee = function (req, res) {
 }
 
 exports.deleteEmployee = function (req, res) {
-  Employee.findOneAndRemove({'email': req.params.email}, function (err) {
+  Employee.findOneAndRemove({'email': req.body.email}, function (err) {
     if (err) {
       return handleError(err);
     } else {
