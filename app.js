@@ -39,7 +39,17 @@ app.get('/download/:fileName', function (req, res) {
   res.sendFile(__dirname + '/public/uploads/' + req.params.fileName);
 });
 
+app.get('/uploads/*', function (req, res) {
+  console.log("fileName: " + req.originalUrl);
+  res.sendFile(__dirname + '/public/' + req.originalUrl);
+});
+
 app.get('/Jabra_Elite_Sport-v5.1.1-vector/*', function (req, res) {
+  console.log("fileName: " + req.originalUrl);
+  res.sendFile(__dirname + '/public/uploads/' + req.originalUrl);
+});
+
+app.get('/Jabra_Elite_65t-v1.2.1-vector/*', function (req, res) {
   console.log("fileName: " + req.originalUrl);
   res.sendFile(__dirname + '/public/uploads/' + req.originalUrl);
 });
